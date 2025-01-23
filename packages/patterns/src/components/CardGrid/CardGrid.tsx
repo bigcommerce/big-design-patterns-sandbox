@@ -4,6 +4,7 @@ import { Button, Grid, Text, Flex, FlexItem } from "@bigcommerce/big-design";
 import { GridProps, GridItemProps, ButtonProps } from "@bigcommerce/big-design";
 import { ChevronRightIcon } from "@bigcommerce/big-design-icons";
 import { StyledCardGridItem } from "./styled";
+import React from "react";
 
 /**
  * Interface for button props used within the CardGridItem component.
