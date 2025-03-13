@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   FlexItem,
-  Button,
   Panel,
   Form,
   FormGroup,
@@ -356,7 +355,6 @@ const CRUDAddEditPage: FunctionComponent = () => {
           backLink={{
             text: "Back to items list",
             onClick: () => backToListingHandler(),
-            href: "#",
           }}
         />
       }
@@ -390,7 +388,7 @@ const CRUDAddEditPage: FunctionComponent = () => {
                 gridColumns={{ mobile: "100%", tablet: "414px" }}
                 gridGap={theme.spacing.small}
               >
-                <a id="nameFG"></a>
+                <div id="nameFG"></div>
                 <FormGroup>
                   <Input
                     id="name"
@@ -455,7 +453,7 @@ const CRUDAddEditPage: FunctionComponent = () => {
                     }
                   </Scroller>
                 </Box>
-                <a id="priceFG"></a>
+                <div id="priceFG"></div>
                 <FormGroup>
                   <Input
                     id="price"
@@ -478,7 +476,7 @@ const CRUDAddEditPage: FunctionComponent = () => {
                   value={stock}
                   required
                 />
-                <a id="fileFG"></a>
+                <div id="fileFG"></div>
                 <FormGroup>
                   <FileUploader
                     dropzoneConfig={{
