@@ -3,7 +3,6 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "@bigcommerce/big-design-icons";
-import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled from "styled-components";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
@@ -48,8 +47,6 @@ const EmblaSlide = styled.div`
   }
 `;
 
-EmblaSlide.defaultProps = { theme: defaultTheme };
-
 const EmblaSlideInner = styled.div`
   position: relative;
   overflow: hidden;
@@ -57,7 +54,6 @@ const EmblaSlideInner = styled.div`
 `;
 
 // Provides default theme props to ensure consistent styling if not provided externally
-EmblaSlideInner.defaultProps = { theme: defaultTheme };
 
 const EmblaSlideImg = styled.img`
   display: block;
@@ -89,17 +85,10 @@ const EmblaButton = styled.button<{ side: "left" | "right" }>`
   }
 
   &:disabled {
-  opacity: 0.75;
+    opacity: 0.75;
     cursor: default;
     pointer-events: none;
   }
-`;
-
-EmblaButton.defaultProps = { theme: defaultTheme };
-
-const ButtonSvg = styled.svg`
-  width: 65%;
-  height: 65%;
 `;
 
 const EmblaCarousel: React.FC<PropType> = (props) => {

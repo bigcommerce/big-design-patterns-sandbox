@@ -6,7 +6,9 @@
     "start": "lerna run serve --scope examples-site",
     "build": "lerna run build",
     "build-site": "lerna run build --scope examples-site",
-    "publish": "pnpm publish packages/patterns"
+    "publish": "pnpm publish packages/patterns",
+    "lint:patterns": "lerna run lint --scope bigcommerce-design-patterns",
+    "lint:patterns:fix": "lerna run lint:fix --scope bigcommerce-design-patterns"
   },
   "devDependencies": {
     "lerna": "^8.1.8"

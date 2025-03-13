@@ -1,4 +1,3 @@
-import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled from "styled-components";
 
 export const StyledFeatureTag = styled.a`
@@ -43,8 +42,6 @@ export const StyledFeatureTag = styled.a`
   }
 `;
 
-StyledFeatureTag.defaultProps = { theme: defaultTheme };
-
 export const StyledFeatureTagIcon = styled.div`
   display: flex;
   width: ${({ theme }) => theme.helpers.remCalc(24)};
@@ -58,5 +55,3 @@ export const StyledFeatureTagIcon = styled.div`
     transform-origin: center;
   }
 `;
-
-StyledFeatureTagIcon.defaultProps = { theme: defaultTheme };

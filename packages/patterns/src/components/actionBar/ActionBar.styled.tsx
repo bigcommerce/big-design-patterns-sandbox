@@ -1,7 +1,10 @@
 import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled from "styled-components";
 import { BoxProps } from "@bigcommerce/big-design";
-import { pageMaxWidth, pageWideMaxWidth } from "../../big-design-theme-extras/StyleDefinitions";
+import {
+  pageMaxWidth,
+  pageWideMaxWidth,
+} from "../../big-design-theme-extras/StyleDefinitions";
 
 // add the wide breakpoint definition to the theme
 const moddedTheme = {
@@ -11,7 +14,6 @@ const moddedTheme = {
     wide: "1500px",
   },
 };
-
 
 /**
  * Styled component for the action bar.
@@ -30,9 +32,6 @@ export const StyledActionBar = styled.div<BoxProps>`
   border-block-start: ${({ theme }) => theme.border.box};
   z-index: ${({ theme }) => theme.zIndex.fixed};
 `;
-
-// Provides default theme props to ensure consistent styling if not provided externally
-StyledActionBar.defaultProps = { theme: defaultTheme };
 
 /**
  * Styled component for the contents within the action bar.
@@ -57,11 +56,8 @@ export const StyledActionBarContents = styled.div<BoxProps>`
   @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
     padding-inline: ${({ theme }) => theme.spacing.xxLarge};
   }
-  
+
   @media (min-width: ${moddedTheme.breakpoints.wide}) {
     max-width: ${pageWideMaxWidth};
   }
 `;
-
-// Sets the default theme to ensure that the component has access to theme values even if not explicitly provided
-StyledActionBarContents.defaultProps = { theme: defaultTheme };

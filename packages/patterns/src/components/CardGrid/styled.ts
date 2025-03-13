@@ -1,9 +1,8 @@
-import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled from "styled-components";
 import { Box } from "@bigcommerce/big-design";
 
 export const StyledCardGridItem = styled(Box)`
-  &.card-grid__item--link{
+  &.card-grid__item--link {
     background-color: ${({ theme }) => theme.colors.transparent};
     cursor: pointer;
 
@@ -22,5 +21,3 @@ export const StyledCardGridItem = styled(Box)`
     }
   }
 `;
-
-StyledCardGridItem.defaultProps = { theme: defaultTheme };

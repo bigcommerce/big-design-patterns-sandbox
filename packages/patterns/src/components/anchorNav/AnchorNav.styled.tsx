@@ -72,4 +72,3 @@ position relative;
 }
 `;
 
-StyledAnchorNav.defaultProps = { theme: defaultTheme };
