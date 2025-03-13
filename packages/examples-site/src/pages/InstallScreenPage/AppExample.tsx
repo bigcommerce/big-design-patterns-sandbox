@@ -1,9 +1,6 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { Link } from "@bigcommerce/big-design";
-import {
-  AdvancedPanel as Panel,
-  InstallScreen,
-} from "bigcommerce-design-patterns";
+import { InstallScreen } from "bigcommerce-design-patterns";
 import { AutoAwesomeIcon as MagicIcon } from "@bigcommerce/big-design-icons";
 import { useNavigate } from "react-router";
 
@@ -22,8 +19,18 @@ const InstallScreenApp: FunctionComponent = () => {
     },
     summary: "Sell on other websites with the power of your BigCommerce store",
     features: [
-      { label: "Multi-storefront support", icon: <MagicIcon />, href:"#", target:"_self" },
-      { label: "Built by BigCommerce", icon: <MagicIcon />, href:"#", target:"_self" },
+      {
+        label: "Multi-storefront support",
+        icon: <MagicIcon />,
+        href: "#",
+        target: "_self",
+      },
+      {
+        label: "Built by BigCommerce",
+        icon: <MagicIcon />,
+        href: "#",
+        target: "_self",
+      },
     ],
     screenshots: [
       {
@@ -101,18 +108,16 @@ const InstallScreenApp: FunctionComponent = () => {
   };
 
   return (
-      <InstallScreen
-        backButtonLabel="Apps"
-        onBackButtonClick={() => {
-          navigate("/");
-        }}
-        app={app}
-        onInstallButtonClick={(e:MouseEvent) => {
-          e.preventDefault();
-          window.alert("Install button clicked");
-        }}
-        copy={copy}
-      />
+    <InstallScreen
+      onBackButtonClick={() => {
+        navigate("/");
+      }}
+      app={app}
+      onInstallButtonClick={() => {
+        window.alert("Install button clicked");
+      }}
+      copy={copy}
+    />
   );
 };
 

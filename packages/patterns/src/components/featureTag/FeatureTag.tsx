@@ -1,6 +1,5 @@
-import React, { FunctionComponent, ReactElement, ReactNode } from "react";
+import React, { FunctionComponent, ReactElement } from "react";
 import { StyledFeatureTag, StyledFeatureTagIcon } from "./FeatureTag.styled";
-import { Flex, FlexItem } from "@bigcommerce/big-design";
 import { IconProps } from "@bigcommerce/big-design-icons";
 
 /**

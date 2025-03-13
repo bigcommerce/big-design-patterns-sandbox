@@ -1,6 +1,4 @@
-import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled from "styled-components";
-import { BoxProps } from "@bigcommerce/big-design";
 
 import { GridItem, Link } from "@bigcommerce/big-design";
 

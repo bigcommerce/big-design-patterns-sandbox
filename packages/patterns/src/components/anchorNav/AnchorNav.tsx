@@ -12,33 +12,50 @@ export interface AnchorNavProps {
   elements: AnchorNavElement[];
 }
 
+// Create a separate component for each panel
+interface AnchorPanelProps {
+  element: AnchorNavElement;
+  index: number;
+  onVisible: (index: number) => void;
+}
+
+const AnchorPanel: FunctionComponent<AnchorPanelProps> = ({
+  element,
+  index,
+  onVisible,
+}) => {
+  const elementRef = React.useRef<HTMLDivElement>(null);
+  const isVisible = useIntersection(elementRef, "0px");
+
+  React.useEffect(() => {
+    if (isVisible) {
+      onVisible(index);
+    }
+  }, [isVisible, index, onVisible]);
+
+  return (
+    <div ref={elementRef} id={element.id} className="anchor-nav__element">
+      {element.element}
+    </div>
+  );
+};
+
 export const AnchorNav: FunctionComponent<AnchorNavProps> = ({ elements }) => {
   const [anchorVisible, setAnchorVisible] = React.useState(0);
-  const handleVisibility = (elementIndex:number) => {
+  const handleVisibility = React.useCallback((elementIndex: number) => {
     setAnchorVisible(elementIndex);
-  };
+  }, []);
 
-  // let's use the intersection observer on the various element divs
-  // to trigger the anchor nav to highlight the corresponding anchor
-  // when the element is in view
+  // Now we map to the separate component
+  const anchorPanels = elements.map((element, i) => (
+    <AnchorPanel
+      key={element.id}
+      element={element}
+      index={i}
+      onVisible={handleVisibility}
+    />
+  ));
 
-  const anchorPanels = elements.map((element, i) => {
-    const elementRef = React.useRef(null);
-    const isVisible = useIntersection(elementRef, "0px");
-
-    React.useEffect(() => {
-      if (isVisible) {
-        // highlight the anchor
-        handleVisibility(i);
-      }
-    }, [handleVisibility, isVisible]);
-
-    return (
-      <div key={element.id} ref={elementRef} id={element.id} className="anchor-nav__element">
-        {element.element}
-      </div>
-    );
-  });
   return (
     <StyledAnchorNav>
       <nav className="anchor-nav__list">

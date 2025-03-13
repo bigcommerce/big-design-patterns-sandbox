@@ -1,4 +1,3 @@
-import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled from "styled-components";
 import { BoxProps } from "@bigcommerce/big-design";
 
@@ -11,5 +10,3 @@ export const StyledContextSelector = styled.div<BoxProps>`
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   padding: ${({ theme }) => theme.spacing.xSmall};
 `;
-
-StyledContextSelector.defaultProps = { theme: defaultTheme };

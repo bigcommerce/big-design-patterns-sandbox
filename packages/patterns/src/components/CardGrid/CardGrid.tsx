@@ -1,7 +1,15 @@
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Button, Grid, Text, Flex, FlexItem } from "@bigcommerce/big-design";
-import { GridProps, GridItemProps, ButtonProps } from "@bigcommerce/big-design";
+import {
+  Button,
+  Grid,
+  Text,
+  Flex,
+  FlexItem,
+  GridProps,
+  GridItemProps,
+  ButtonProps,
+} from "@bigcommerce/big-design";
 import { ChevronRightIcon } from "@bigcommerce/big-design-icons";
 import { StyledCardGridItem } from "./styled";
 

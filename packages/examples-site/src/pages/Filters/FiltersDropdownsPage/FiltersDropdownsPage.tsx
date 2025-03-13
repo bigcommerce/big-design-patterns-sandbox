@@ -1,21 +1,16 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import {
-  TableItem,
-  Select,
-  Grid,
-} from "@bigcommerce/big-design";
+import { Select, Grid } from "@bigcommerce/big-design";
 
 import { getCategories, getProducts } from "../../../data/services";
 import { Category } from "../../../data/dummyCategories";
 
-import ProductsTable, { Item }  from "../../../common/ProductsTable";
+import ProductsTable, { Item } from "../../../common/ProductsTable";
 import ProductsPage from "../../../common/ProductsPage";
 
 /**
  * PageList component - Displays a page with a list of items in a table.
  */
 const PageFiltersDropdowns: FunctionComponent = () => {
-
   // DATA HANDLING
   const [itemsLoaded, setItemsLoaded] = useState(false);
 

@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactNode } from "react";
-import { Flex } from "@bigcommerce/big-design";
 import { StyledContextSelector } from "./ContextSelector.styled";
 
 export interface ContextSelectorProps {

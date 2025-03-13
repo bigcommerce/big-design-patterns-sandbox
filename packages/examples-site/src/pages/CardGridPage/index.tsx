@@ -1,13 +1,5 @@
 import React, { FunctionComponent } from "react";
-import {
-  Flex,
-  FlexItem,
-  Text,
-  HR,
-  Table,
-  H4,
-  H3,
-} from "@bigcommerce/big-design";
+import { Flex, FlexItem, HR, Table, H4, H3 } from "@bigcommerce/big-design";
 import { CardGrid, AdvancedPanel as Panel } from "bigcommerce-design-patterns";
 import { Header, Page } from "@bigcommerce/big-design-patterns";
 import { useNavigate } from "react-router";
@@ -108,6 +100,7 @@ const CardGridPage: FunctionComponent = () => {
                     icon: (
                       <img
                         src="https://storage.googleapis.com/bigcommerce-developers/images/bigc-dev/bigc-inverted-black.svg"
+                        alt="BigCommerce logo"
                         height="45"
                         width="45"
                       />
@@ -123,6 +116,7 @@ const CardGridPage: FunctionComponent = () => {
                     icon: (
                       <img
                         src="https://storage.googleapis.com/bigcommerce-developers/images/bigc-dev/bigc-inverted-black.svg"
+                        alt="BigCommerce logo"
                         height="45"
                         width="45"
                       />

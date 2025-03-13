@@ -28,7 +28,13 @@ const PageFeaturedContent: FunctionComponent = () => {
     >
       <Hero
         heading="Hero heading"
-        mediaContent={<img src="./assets/images/page-hero-image.png" />}
+        mediaContent={
+          <img
+            src="./assets/images/page-hero-image.png"
+            alt="smiling woman with glasses holding coffee mug while working on laptop"
+            height="100%"
+          />
+        }
       >
         <Flex flexDirection={"column"}>
           <Text color="secondary70">

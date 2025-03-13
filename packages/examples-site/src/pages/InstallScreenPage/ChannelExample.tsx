@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   Link,
-  Box,
   Fieldset,
   Form,
   FormGroup,
@@ -97,7 +96,12 @@ const ChannelCard: FunctionComponent<ChannelCardProps> = ({
         <Input
           name="storefrontName"
           label="Storefront name"
-          onChange={(e) => handleDataChange(e.target.name as keyof FormDataType, e.target.value)}
+          onChange={(e) =>
+            handleDataChange(
+              e.target.name as keyof FormDataType,
+              e.target.value
+            )
+          }
           onBlur={validateStorefrontName}
           placeholder="Enter a name for your storefront"
           type="text"
@@ -114,7 +118,9 @@ const ChannelCard: FunctionComponent<ChannelCardProps> = ({
           filterable
           label="Language"
           maxHeight={300}
-          onOptionChange={(value) => handleDataChange("storefrontLanguage", value)}
+          onOptionChange={(value) =>
+            handleDataChange("storefrontLanguage", value || "")
+          }
           options={[
             { value: "en-US", content: "English (en-US)" },
             { value: "es-MX", content: "Spanish (es-MX)" },
@@ -132,7 +138,12 @@ const ChannelCard: FunctionComponent<ChannelCardProps> = ({
             radioGroup="createSampleProducts"
             checked={formData.createSampleProducts === "sample-data"}
             label="Use sample data"
-            onChange={(e) => handleDataChange(e.target.name as keyof FormDataType, e.target.value)}
+            onChange={(e) =>
+              handleDataChange(
+                e.target.name as keyof FormDataType,
+                e.target.value
+              )
+            }
             value="sample-data"
           />
           <Radio
@@ -140,7 +151,12 @@ const ChannelCard: FunctionComponent<ChannelCardProps> = ({
             radioGroup="createSampleProducts"
             checked={formData.createSampleProducts === "existing-channel"}
             label="Import from existing channel"
-            onChange={(e) => handleDataChange(e.target.name as keyof FormDataType, e.target.value)}
+            onChange={(e) =>
+              handleDataChange(
+                e.target.name as keyof FormDataType,
+                e.target.value
+              )
+            }
             value="existing-channel"
           />
         </FormGroup>
@@ -198,6 +214,7 @@ const InstallScreenChannel: FunctionComponent = () => {
       <p><strong>Modern tech-stack</strong> A developer-first approach includes a fully customizable UI kit & comprehensive GraphQL Storefront API client, all optimized for Next.js and React Server Components.</p>
       <p><strong>Page building with Makeswift</strong> Enhance your marketing efforts with Catalyst's integrated Makeswift visual editor, allowing you to create engaging content effortlessly & without touching code.</p>
     `,
+    scopesDenied: [],
   };
 
   // Copy texts used in the InstallScreen component
@@ -227,6 +244,11 @@ const InstallScreenChannel: FunctionComponent = () => {
     ),
     install: "Create Storefront",
     cancel: "Cancel",
+    price: "Free",
+    rating: "Rating",
+    partnerTier: "Partner Tier",
+    scopesAllowed: "Permissions Granted",
+    scopesDenied: "Permissions Denied",
   };
 
   // State to track form data changes
@@ -246,12 +268,13 @@ const InstallScreenChannel: FunctionComponent = () => {
    * Currently, it shows an alert with the form data.
    */
   const handleInstallButtonClick = () => {
-    window.alert("Installing catalyst storefront with data: " + JSON.stringify(formData));
+    window.alert(
+      "Installing catalyst storefront with data: " + JSON.stringify(formData)
+    );
   };
 
   return (
     <InstallScreen
-      backButtonLabel="Apps"
       onBackButtonClick={() => {
         navigate("/");
       }}

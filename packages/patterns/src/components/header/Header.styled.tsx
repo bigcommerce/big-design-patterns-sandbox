@@ -1,4 +1,3 @@
-import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled from "styled-components";
 import { ButtonProps } from "@bigcommerce/big-design";
 
@@ -25,5 +24,3 @@ export const StyledBackButton = styled.button<ButtonProps>`
     outline: 4px solid ${({ theme }) => theme.colors.primary20};
   }
 `;
-
-StyledBackButton.defaultProps = { theme: defaultTheme };

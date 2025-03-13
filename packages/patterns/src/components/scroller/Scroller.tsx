@@ -1,9 +1,8 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent } from "react";
 import { StyledScroller } from "./Scroller.styled";
-import { GridProps } from "@bigcommerce/big-design";
-import { Grid } from "@bigcommerce/big-design";
+import { Grid, GridProps } from "@bigcommerce/big-design";
 
-export interface ScrollerProps extends GridProps{
+export interface ScrollerProps extends GridProps {
   width?: GridProps["gridColumns"];
   height?: GridProps["gridRows"];
 }
@@ -11,9 +10,7 @@ export interface ScrollerProps extends GridProps{
 export const Scroller: FunctionComponent<ScrollerProps> = (props) => {
   return (
     <Grid gridColumns={props.width} gridRows={props.height} {...props}>
-        <StyledScroller>
-            {props.children}
-        </StyledScroller>
+      <StyledScroller>{props.children}</StyledScroller>
     </Grid>
   );
 };

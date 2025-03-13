@@ -131,16 +131,6 @@ const AppRating: FunctionComponent<{ rating: number }> = ({ rating }) => {
 };
 
 /**
- * Converts a text string to an HTML structure.
- *
- * @param {string} text - The text to be converted to HTML.
- * @returns {Object} HTML object for rendering.
- */
-const textToHTML = (text: string) => {
-  return { __html: text };
-};
-
-/**
  * Renders the partner tier information based on the tier name and heading text.
  *
  * @param {string} tier - Partner tier name.
@@ -214,15 +204,13 @@ export const InstallScreen: FunctionComponent<InstallScreenProps> = ({
     partnerTier: "Partner Tier",
     policiesAndTerms: <>Policies and Terms</>,
     install: "Install",
-    scopesAllowed: <>"Scopes Allowed"</>,
-    scopesDenied: <>"Scopes Denied"</>,
+    scopesAllowed: <>Scopes Allowed</>,
+    scopesDenied: <>Scopes Denied</>,
     cancel: "Cancel",
   },
 }) => {
   const [formOpen, setFormOpen] = useState(false);
   const [acknowledged, setAcknowledged] = useState(true);
-
-  const descriptionAsHTML = app.description ? textToHTML(app.description) : null;
 
   /**
    * Handles the click event for the cancel button.
@@ -249,7 +237,7 @@ export const InstallScreen: FunctionComponent<InstallScreenProps> = ({
    *
    * @param {React.ChangeEvent<HTMLInputElement>} event - The change event object.
    */
-  const handleAcknowledgmentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAcknowledgmentChange = () => {
     setAcknowledged(!acknowledged);
   };
 
@@ -286,7 +274,12 @@ export const InstallScreen: FunctionComponent<InstallScreenProps> = ({
               borderRadius="normal"
               padding={`large`}
             >
-              <img src={app.logoURL} width={"60"} height={"60"} alt="App Logo" />
+              <img
+                src={app.logoURL}
+                width={"60"}
+                height={"60"}
+                alt="App Logo"
+              />
             </GridItem>
             <GridItem>
               <H1 marginBottom={"small"}>{app.name}</H1>
@@ -331,10 +324,7 @@ export const InstallScreen: FunctionComponent<InstallScreenProps> = ({
               <HR />
             </Box>
             {/* App description */}
-            {app.description ? (
-              // <Box dangerouslySetInnerHTML={descriptionAsHTML} />
-              <HTMLParser html={app.description} />
-            ) : null}
+            {app.description ? <HTMLParser html={app.description} /> : null}
           </Flex>
         </GridItem>
         {/* Installation panel */}

@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { Box, Search, TableItem } from "@bigcommerce/big-design";
+import { Box, Search } from "@bigcommerce/big-design";
 
 import { getCategories, getProducts } from "../../../data/services";
 import { Category } from "../../../data/dummyCategories";
 
-import ProductsTable, { Item }  from "../../../common/ProductsTable";
+import ProductsTable, { Item } from "../../../common/ProductsTable";
 import ProductsPage from "../../../common/ProductsPage";
 
 /**

@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Chip,
-  TableItem,
   Input,
   Form,
   FormGroup,
@@ -18,7 +17,6 @@ import {
   FilterListIcon,
   SearchIcon,
 } from "@bigcommerce/big-design-icons";
-import { useNavigate } from "react-router";
 import {
   StyledGridItem,
   StyledFiltersLink,
@@ -44,10 +42,6 @@ interface Filter {
  * PageList component - Displays a page with a list of items in a table.
  */
 const PageFiltersAdvanced: FunctionComponent = () => {
-  // NAVIGATION
-
-  const navigate = useNavigate();
-
   // knowing the items are loaded helps us to show the loader or an empty state when the items are empty
   const [itemsLoaded, setItemsLoaded] = useState(false);
 
@@ -80,12 +74,12 @@ const PageFiltersAdvanced: FunctionComponent = () => {
     }
   };
   // search submission handler
-  const onSearchSubmit = (e) => {
+  const onSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleFiltering();
   };
 
-  const clearAllFilters = (e) => {
+  const clearAllFilters = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e && e.preventDefault();
     setFilters({
       name: filters.name,
@@ -153,7 +147,8 @@ const PageFiltersAdvanced: FunctionComponent = () => {
         (cat) => cat !== value
       );
     } else {
-      currentFilters[type] = value;
+      // Type assertion to allow indexing with a string key
+      (currentFilters as Record<string, any>)[type] = value;
     }
     setFilters(currentFilters);
   };
@@ -181,7 +176,7 @@ const PageFiltersAdvanced: FunctionComponent = () => {
     stockMin: undefined,
     stockMax: undefined,
   });
-  const assignModalFilter = (key, value) => {
+  const assignModalFilter = (key: string, value: number | number[]) => {
     setModalFilters({ ...modalFilters, [key]: value });
   };
 
