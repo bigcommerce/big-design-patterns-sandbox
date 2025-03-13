@@ -1,9 +1,6 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { Link } from "@bigcommerce/big-design";
-import {
-  AdvancedPanel as Panel,
-  InstallScreen,
-} from "bigcommerce-design-patterns";
+import { InstallScreen } from "bigcommerce-design-patterns";
 import { AutoAwesomeIcon as MagicIcon } from "@bigcommerce/big-design-icons";
 import { useNavigate } from "react-router";
 
