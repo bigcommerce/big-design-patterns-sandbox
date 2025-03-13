@@ -1,6 +1,9 @@
 import React, { FunctionComponent } from "react";
-import { Flex, FlexItem, Text, HR, Table } from "@bigcommerce/big-design";
-import { FeatureTag, AdvancedPanel as Panel } from "bigcommerce-design-patterns";
+import { Flex, FlexItem, HR, Table } from "@bigcommerce/big-design";
+import {
+  FeatureTag,
+  AdvancedPanel as Panel,
+} from "bigcommerce-design-patterns";
 import { Header, Page } from "@bigcommerce/big-design-patterns";
 import { useNavigate } from "react-router";
 import { theme } from "@bigcommerce/big-design-theme";
@@ -25,17 +28,17 @@ const PageFeatureTags: FunctionComponent = () => {
 
   return (
     <Page
-    header={
-      <Header 
-        title="Feature Tags"
-        description="Feature tags are used to showcase categories and features of a particular asset or application."
-        backLink={{
-          text: "Back to patterns",
-          onClick: () => navigate("/"),
-          href: "#",
-        }}
-      />
-    }
+      header={
+        <Header
+          title="Feature Tags"
+          description="Feature tags are used to showcase categories and features of a particular asset or application."
+          backLink={{
+            text: "Back to patterns",
+            onClick: () => navigate("/"),
+            href: "#",
+          }}
+        />
+      }
     >
       <Flex flexDirection="column" flexGap={theme.spacing.xLarge}>
         <Panel headerTitle="Example">

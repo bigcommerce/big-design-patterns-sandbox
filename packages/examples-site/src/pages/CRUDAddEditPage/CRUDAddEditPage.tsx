@@ -98,7 +98,7 @@ const CRUDAddEditPage: FunctionComponent = () => {
         data.price && setPrice(data.price);
       });
     }
-  }, [nameParam]);
+  }, [isEditPage, nameParam]);
 
   // INPUT CHANGE HANDLERS
   const nameChangeHandler = (event: any) => {

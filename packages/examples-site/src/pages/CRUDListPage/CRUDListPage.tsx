@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import {
   Flex,
   FlexItem,
@@ -163,18 +168,25 @@ const PageCRUDList: FunctionComponent = () => {
   // DATA HANDLING
   const [currentItems, setCurrentItems] = useState<Item[]>([]);
 
-  const setTableItems = (themItems: any, pageCurrent = currentPage, pageItemsNum = itemsPerPage) => {
-    const maxItems = pageCurrent * pageItemsNum;
-    const lastItem = Math.min(maxItems, themItems.length);
-    const firstItem = Math.max(0, maxItems - pageItemsNum);
-
-    setCurrentItems(themItems.slice(firstItem, lastItem));
-  };
-
   // PAGINATION
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPageOptions] = useState([10, 20, 30]);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  const setTableItems = useCallback(
+    (
+      themItems: Item[],
+      pageCurrent = currentPage,
+      pageItemsNum = itemsPerPage
+    ) => {
+      const maxItems = pageCurrent * pageItemsNum;
+      const lastItem = Math.min(maxItems, themItems.length);
+      const firstItem = Math.max(0, maxItems - pageItemsNum);
+
+      setCurrentItems(themItems.slice(firstItem, lastItem));
+    },
+    [currentPage, itemsPerPage]
+  );
 
   const onItemsPerPageChange = (newRange: number) => {
     setCurrentPage(1);
@@ -286,7 +298,7 @@ const PageCRUDList: FunctionComponent = () => {
         setTableItems(products as Item[]);
       }
     );
-  }, []);
+  }, [setTableItems]);
 
   // alerts
   useEffect(() => {
@@ -319,7 +331,7 @@ const PageCRUDList: FunctionComponent = () => {
             {
               // differentiate from empty search or empty products and show a loader element if the data is being fetched
               searchValue
-                ? `No products were found for query “${searchValue}”`
+                ? `No products were found for query "${searchValue}"`
                 : "You have no products yet."
             }
           </Text>

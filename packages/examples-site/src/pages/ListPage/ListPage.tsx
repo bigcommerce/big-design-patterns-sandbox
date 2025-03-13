@@ -195,27 +195,6 @@ const columns = [
 ];
 
 /**
- * Function to sort the items based on a column and direction.
- * @param {Item[]} items - The items to sort.
- * @param {string} columnHash - The column to sort by.
- * @param {string} direction - The direction to sort (ASC or DESC).
- * @returns {Item[]} - The sorted items.
- */
-const sort = (items: Item[], columnHash: string, direction: string) => {
-  return items
-    .concat()
-    .sort((a, b) =>
-      direction === "ASC"
-        ? a[columnHash] >= b[columnHash]
-          ? 1
-          : -1
-        : a[columnHash] <= b[columnHash]
-        ? 1
-        : -1
-    );
-};
-
-/**
  * Page header call-to-actions (CTAs) component.
  */
 const PageHeaderCTAs = [

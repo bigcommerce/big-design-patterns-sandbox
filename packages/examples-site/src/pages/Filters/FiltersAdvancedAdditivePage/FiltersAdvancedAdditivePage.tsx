@@ -41,7 +41,6 @@ interface Filter {
  * PageList component - Displays a page with a list of items in a table.
  */
 const PageFiltersAdvancedAdditive: FunctionComponent = () => {
-
   // DATA HANDLING
   const [itemsLoaded, setItemsLoaded] = useState(false);
 
@@ -65,14 +64,14 @@ const PageFiltersAdvancedAdditive: FunctionComponent = () => {
   const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
     // let's reset the items to the original data if the search value is empty
-    console.log(!event.target.value)
+    console.log(!event.target.value);
     if (!event.target.value) {
       const newFilterArray = [...filterArray];
       setFilterArray(newFilterArray);
     }
   };
   // search submission handler
-  const onSearchSubmit = (e) => {
+  const onSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchValue) {
       // let's find the items
@@ -89,15 +88,15 @@ const PageFiltersAdvancedAdditive: FunctionComponent = () => {
     let filteredItems = [...allItems];
 
     // lets include search
-    console.log(searchValue)
+    console.log(searchValue);
     if (searchValue) {
       filteredItems = filteredItems.filter((item) =>
         item.name.toLowerCase().includes(searchValue.toLowerCase())
       );
     }
 
-    const filterfunction = (baseArray, filter) => {
-      return baseArray.filter((item) => {
+    const filterfunction = (baseArray: Item[], filter: Filter) => {
+      return baseArray.filter((item: Item) => {
         // let's switch through the comparison operators
         switch (filter.comparisonOperator) {
           case "=":
@@ -106,9 +105,13 @@ const PageFiltersAdvancedAdditive: FunctionComponent = () => {
             // here we could be either looking at an array or a single value
             return item[filter.field] != filter.value;
           case ">":
-            return item[filter.field] > filter.value;
+            return (
+              filter.value !== undefined && item[filter.field] > filter.value
+            );
           case "<":
-            return item[filter.field] < filter.value;
+            return (
+              filter.value !== undefined && item[filter.field] < filter.value
+            );
           case "contains":
             return item[filter.field].includes(filter.value);
           case "excludes":
@@ -144,12 +147,12 @@ const PageFiltersAdvancedAdditive: FunctionComponent = () => {
     closeFilterModal();
   };
 
-  const clearAllFilters = (e) => {
+  const clearAllFilters = (e: React.MouseEvent | null) => {
     e && e.preventDefault();
     setFilterArray([]);
   };
 
-  const openFilterModal = (e) => {
+  const openFilterModal = (e: React.MouseEvent) => {
     e.preventDefault();
     // set the modal filter array to the current filter array
     const modalFilters =
@@ -172,7 +175,7 @@ const PageFiltersAdvancedAdditive: FunctionComponent = () => {
 
   // temporaty state for filters in modal
   const [modalFilterArray, setModalFilterArray] = useState<Filter[]>([]);
-  const addFilterRow = (e) => {
+  const addFilterRow = (e: React.MouseEvent) => {
     e.preventDefault();
     const newFilterArray = [...modalFilterArray];
     newFilterArray.push({
@@ -184,14 +187,14 @@ const PageFiltersAdvancedAdditive: FunctionComponent = () => {
     setModalFilterArray(newFilterArray);
   };
 
-  const deleteFilterRow = (index) => {
+  const deleteFilterRow = (index: number) => {
     setModalFilterArray((prevFilterArray) => {
       const updatedFilterArray = prevFilterArray.filter((_, i) => i !== index);
       return updatedFilterArray;
     });
   };
 
-  const updateModalFilters = (filter) => {
+  const updateModalFilters = (filter: Filter & { index: number }) => {
     setModalFilterArray((prevFilterArray) => {
       const updatedFilterArray = prevFilterArray.map((prevFilter, i) => {
         if (i === filter.index) {
@@ -203,7 +206,7 @@ const PageFiltersAdvancedAdditive: FunctionComponent = () => {
     });
   };
 
-  const deleteChip = (index) => {
+  const deleteChip = (index: number) => {
     setFilterArray((prevFilterArray) => {
       const updatedFilterArray = prevFilterArray.filter((_, i) => i !== index);
       return updatedFilterArray;
