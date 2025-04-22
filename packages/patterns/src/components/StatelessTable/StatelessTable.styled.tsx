@@ -2,7 +2,43 @@ import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled, { css } from "styled-components";
 import { MarginProps, withMargins } from "@bigcommerce/big-design";
 
-import { TrProps } from "./StatelessTable";
+import { TrProps, BodyProps } from "./StatelessTable";
+
+export const StyledTableFigure = styled.figure<MarginProps>`
+  margin: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    white-space: normal;
+  }
+
+  ${withMargins()};
+`;
+
+export const StyledTable = styled.table`
+  border-color: transparent;
+  border-spacing: 0;
+  color: ${({ theme }) => theme.colors.secondary70};
+  text-align: left;
+  width: 100%;
+`;
+
+export const StyledTableBody = styled.tbody<BodyProps>`
+  ${({ theme, withFirstRowBorder }) =>
+    withFirstRowBorder &&
+    css`
+      tr:first-of-type > td {
+        border-top: ${theme.border.box};
+      }
+    `}
+`;
+
+StyledTableBody.defaultProps = { theme: defaultTheme };
+
+StyledTableFigure.defaultProps = { theme: defaultTheme };
+StyledTable.defaultProps = { theme: defaultTheme };
 
 export const StyledStatelessTable = styled.table`
   border-color: transparent;
@@ -50,6 +86,10 @@ export const StyledTh = styled.th`
   white-space: nowrap;
 
   padding: 0.75rem;
+
+  &.checkbox {
+    width: ${({ theme }) => theme.spacing.xLarge};
+  }
 
   ${({ theme }) => theme.breakpoints.tablet} {
     display: table-cell;
@@ -118,6 +158,25 @@ export const StyledTd = styled.td`
     top: 0;
     right: 0;
     width: min-content;
+
+    & > button {
+      background-color: ${({ theme }) => theme.colors.white};
+      padding-inline: 0.25rem;
+
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.primary20};
+      }
+    }
+  }
+  &.checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: ${({ theme }) => theme.spacing.xLarge};
+
+    & ~ td:not(.actions) {
+      padding-inline-start: ${({ theme }) => theme.spacing.xxxLarge};
+    }
   }
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -126,6 +185,12 @@ export const StyledTd = styled.td`
 
     &.actions {
       position: static;
+    }
+    &.checkbox {
+      position: static;
+      & ~ td:not(.actions) {
+        padding-inline-start: ${({ theme }) => theme.spacing.medium};
+      }
     }
 
     &:first-child {

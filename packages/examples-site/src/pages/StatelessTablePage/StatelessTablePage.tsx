@@ -1,5 +1,11 @@
 import React, { FunctionComponent } from "react";
-import { Flex, FlexItem, Panel, Button } from "@bigcommerce/big-design";
+import {
+  Flex,
+  FlexItem,
+  Panel,
+  Button,
+  Checkbox,
+} from "@bigcommerce/big-design";
 import { MoreHorizIcon } from "@bigcommerce/big-design-icons";
 import { Header, Page } from "@bigcommerce/big-design-patterns";
 import { useNavigate } from "react-router";
@@ -21,6 +27,28 @@ const PageStatelessTable: FunctionComponent = () => {
   const [rows, setRows] = React.useState(10);
   const [cells, setCells] = React.useState(7);
 
+  // let's track the checkboxes state
+  const [checkboxes, setCheckboxes] = React.useState(
+    Array.from({ length: rows }).map(() => false)
+  );
+  const handleCheckboxChange = (index: number) => {
+    setCheckboxes((prev) => {
+      const newCheckboxes = [...prev];
+      newCheckboxes[index] = !newCheckboxes[index];
+      return newCheckboxes;
+    });
+  };
+  const handleSelectAll = () => {
+    // let's handle select and deselect all
+    setCheckboxes((prev) => {
+      const newCheckboxes = [...prev];
+      const allSelected = newCheckboxes.every((c) => c);
+      return newCheckboxes.map(() => !allSelected);
+    });
+    const allSelected = checkboxes.every((c) => c);
+    return checkboxes.map(() => !allSelected);
+  };
+
   return (
     <StyledStatelessTablePage>
       <Page
@@ -38,7 +66,10 @@ const PageStatelessTable: FunctionComponent = () => {
       >
         <Flex flexDirection="column" flexGap={theme.spacing.xLarge}>
           <FlexItem>
-            <Panel header="A simple table with columns and rows" marginBottom={'xxLarge'}>
+            <Panel
+              header="A simple table with columns and rows"
+              marginBottom={"xxLarge"}
+            >
               <PanelContents padded={false}>
                 <StatelessTable>
                   <Thead>
@@ -56,7 +87,10 @@ const PageStatelessTable: FunctionComponent = () => {
                       Array.from({ length: rows }).map((_, rowIndex) => (
                         <Tr key={rowIndex}>
                           {Array.from({ length: cells }).map((_, cellIndex) => (
-                            <Td key={cellIndex} data-label={`Column ${cellIndex + 1}`}>
+                            <Td
+                              key={cellIndex}
+                              data-label={`Column ${cellIndex + 1}`}
+                            >
                               Row {rowIndex + 1} Cell {cellIndex + 1}
                             </Td>
                           ))}
@@ -67,7 +101,10 @@ const PageStatelessTable: FunctionComponent = () => {
                 </StatelessTable>
               </PanelContents>
             </Panel>
-            <Panel header="A table with headers in both columns and rows" marginBottom={'xxLarge'}>
+            <Panel
+              header="A table with headers in both columns and rows"
+              marginBottom={"xxLarge"}
+            >
               <PanelContents padded={false}>
                 <StatelessTable>
                   <Thead>
@@ -87,7 +124,10 @@ const PageStatelessTable: FunctionComponent = () => {
                         <Tr key={rowIndex} tabIndex={0}>
                           <Th scope="row">Row {rowIndex + 1}</Th>
                           {Array.from({ length: cells }).map((_, cellIndex) => (
-                            <Td key={cellIndex} data-label={`Column ${cellIndex + 1}`}>
+                            <Td
+                              key={cellIndex}
+                              data-label={`Column ${cellIndex + 1}`}
+                            >
                               Row {rowIndex + 1} Cell {cellIndex + 1}
                             </Td>
                           ))}
@@ -98,7 +138,10 @@ const PageStatelessTable: FunctionComponent = () => {
                 </StatelessTable>
               </PanelContents>
             </Panel>
-            <Panel header="A table with clickable rows" marginBottom={'xxLarge'}>
+            <Panel
+              header="A table with clickable rows"
+              marginBottom={"xxLarge"}
+            >
               <PanelContents padded={false}>
                 <StatelessTable>
                   <Thead>
@@ -121,7 +164,10 @@ const PageStatelessTable: FunctionComponent = () => {
                           }
                         >
                           {Array.from({ length: cells }).map((_, cellIndex) => (
-                            <Td key={cellIndex} data-label={`Column ${cellIndex + 1}`}>
+                            <Td
+                              key={cellIndex}
+                              data-label={`Column ${cellIndex + 1}`}
+                            >
                               Row {rowIndex + 1} Cell {cellIndex + 1}
                             </Td>
                           ))}
@@ -132,12 +178,15 @@ const PageStatelessTable: FunctionComponent = () => {
                 </StatelessTable>
               </PanelContents>
             </Panel>
-            <Panel header="a table with clickable rows and extra CTAs" marginBottom={'xxLarge'}>
+            <Panel
+              header="a table with clickable rows and extra CTAs"
+              marginBottom={"xxLarge"}
+            >
               <PanelContents padded={false}>
                 <StatelessTable>
                   <Thead>
                     <Tr>
-                      {Array.from({ length: (cells-1) }).map((_, index) => (
+                      {Array.from({ length: cells - 1 }).map((_, index) => (
                         <Th scope="col" key={index}>
                           Column {index + 1}
                         </Th>
@@ -157,11 +206,16 @@ const PageStatelessTable: FunctionComponent = () => {
                             alert(`Clicked on row ${rowIndex + 1}`)
                           }
                         >
-                          {Array.from({ length: (cells-1) }).map((_, cellIndex) => (
-                            <Td key={cellIndex} data-label={`Column ${cellIndex + 1}`}>
-                              Row {rowIndex + 1} Cell {cellIndex + 1}
-                            </Td>
-                          ))}
+                          {Array.from({ length: cells - 1 }).map(
+                            (_, cellIndex) => (
+                              <Td
+                                key={cellIndex}
+                                data-label={`Column ${cellIndex + 1}`}
+                              >
+                                Row {rowIndex + 1} Cell {cellIndex + 1}
+                              </Td>
+                            )
+                          )}
                           <Td className="actions">
                             <Button
                               variant="utility"
@@ -173,7 +227,80 @@ const PageStatelessTable: FunctionComponent = () => {
                                   `Clicked on action for row ${rowIndex + 1}`
                                 );
                               }}
-                             />
+                            />
+                          </Td>
+                        </Tr>
+                      ))
+                    }
+                  </Tbody>
+                </StatelessTable>
+              </PanelContents>
+            </Panel>
+
+            <Panel
+              header="A table with checkboxes and extra CTAs"
+              marginBottom={"xxLarge"}
+            >
+              <PanelContents padded={false}>
+                <StatelessTable>
+                  <Thead>
+                    <Tr>
+                      <Th className="checkbox">
+                        <Checkbox
+                          label=""
+                          checked={checkboxes.every((c) => c)}
+                          onChange={handleSelectAll}
+                          isIndeterminate={
+                            checkboxes.some((c) => c) &&
+                            !checkboxes.every((c) => c)
+                          }
+                        ></Checkbox>
+                      </Th>
+                      {Array.from({ length: cells - 1 }).map((_, index) => (
+                        <Th scope="col" key={index}>
+                          Column {index + 1}
+                        </Th>
+                      ))}
+                      <Th scope="col" className="actions">
+                        <span className="sr-only">Actions</span>
+                      </Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    {
+                      // let's create the cells with the contents enumerating "Row X Cell Y"
+                      Array.from({ length: rows }).map((_, rowIndex) => (
+                        <Tr key={rowIndex}>
+                          <Td className="checkbox">
+                            <Checkbox
+                              value={rowIndex}
+                              label=""
+                              checked={checkboxes[rowIndex]}
+                              onChange={() => handleCheckboxChange(rowIndex)}
+                            ></Checkbox>
+                          </Td>
+                          {Array.from({ length: cells - 1 }).map(
+                            (_, cellIndex) => (
+                              <Td
+                                key={cellIndex}
+                                data-label={`Column ${cellIndex + 1}`}
+                              >
+                                Row {rowIndex + 1} Cell {cellIndex + 1}
+                              </Td>
+                            )
+                          )}
+                          <Td className="actions">
+                            <Button
+                              variant="utility"
+                              iconOnly={<MoreHorizIcon />}
+                              mobileWidth="auto"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                alert(
+                                  `Clicked on action for row ${rowIndex + 1}`
+                                );
+                              }}
+                            />
                           </Td>
                         </Tr>
                       ))

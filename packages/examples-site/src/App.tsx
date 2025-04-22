@@ -22,6 +22,7 @@ import PageFiltersAdvanced from "./pages/Filters/FiltersAdvPage/FiltersAdvancedP
 import PageFiltersAdvancedAdditive from "./pages/Filters/FiltersAdvancedAdditivePage/FiltersAdvancedAdditivePage";
 import PageStatelessTable from "./pages/StatelessTablePage/StatelessTablePage";
 import DashboardLayout from "./pages/DashboardLayoutPage";
+import PagePanelContents from "./pages/PanelContentsPage/PanelContentsPage";
 import Sidebar from "../../patterns/src/components/sidebar/sidebar";
 import { SidebarProvider } from "../../patterns/src/components/sidebar/sidebar-context";
 import { ReactRouterProviderAdapter } from "./adapters/react-router-adapter";
@@ -191,6 +192,10 @@ const RouteFC = () => {
     {
       path: "/stateless-table",
       element: <PageStatelessTable />,
+    },
+    {
+      path: "/panel-contents",
+      element: <PagePanelContents />,
     },
   ]);
   

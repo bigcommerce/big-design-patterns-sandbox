@@ -1,15 +1,22 @@
-import { FunctionComponent, ReactNode, memo  } from "react";
-import { Box } from "@bigcommerce/big-design";
+import { ReactNode, memo } from "react";
 
-import { StyledPanelContents } from "./PanelContents.styled";
+import { StyledPanelContentsWrapper, StyledPanelContents } from "./PanelContents.styled";
 
-export interface PanelContentProps {
+import { BoxProps } from "@bigcommerce/big-design";
+
+export interface PanelContentProps extends BoxProps {
   children?: ReactNode;
   padded?: boolean;
+  height?: string;
+  scrollable?: boolean;
 }
 
 export const PanelContents: React.FC<PanelContentProps> = memo(
-  ({ padded, children, ...props }) => {
-    return <StyledPanelContents {...props}>{children}</StyledPanelContents>;
+  ({ children, ...props }) => {
+    return (
+      <StyledPanelContentsWrapper {...props}>
+        <StyledPanelContents {...props}>{children}</StyledPanelContents>
+      </StyledPanelContentsWrapper>
+    );
   }
 );

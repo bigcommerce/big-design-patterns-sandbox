@@ -1,11 +1,13 @@
-import React, { ReactNode, memo } from "react";
-import { StyledTable } from "@bigcommerce/big-design/dist/es/components/Table/styled";
-import { StyledTableBody } from "@bigcommerce/big-design/dist/es/components/Table/Body/styled";
+import React, { ReactNode, memo, ComponentPropsWithoutRef } from "react";
 
-import { StyledTh, StyledTd, StyledTr, StyledThead } from "./StatelessTable.styled";
+import { StyledTable, StyledTableBody, StyledTh, StyledTd, StyledTr, StyledThead } from "./StatelessTable.styled";
 
 export interface StatelessTable {
   children?: ReactNode;
+}
+
+export interface BodyProps extends ComponentPropsWithoutRef<'tbody'> {
+  withFirstRowBorder?: boolean;
 }
 
 export const StatelessTable = StyledTable;
