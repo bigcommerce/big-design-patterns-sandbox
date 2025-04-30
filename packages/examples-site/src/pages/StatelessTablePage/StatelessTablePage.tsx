@@ -30,7 +30,7 @@ import { DummyItem as Item } from "../../data/dummyProducts";
 
 const PageStatelessTable: FunctionComponent = () => {
   const navigate = useNavigate();
-  const [cells, setCells] = React.useState(7);
+  const cells = 7;
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [items, setItems] = useState<Item[]>([]);
   const [page, setPage] = useState(1);
