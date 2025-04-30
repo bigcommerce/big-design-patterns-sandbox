@@ -153,6 +153,18 @@ export const StyledTd = styled.td`
   padding: 0.75rem;
   display: block;
 
+  &:not(.actions):not(.checkbox)&::before {
+    content: attr(data-label);
+    color: ${({ theme }) => theme.colors.secondary70};
+    font-weight: 700;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    ${({ theme }) => theme.breakpoints.tablet} {
+      display: none;
+    }
+  }
+
   &.actions {
     position: absolute;
     top: 0;

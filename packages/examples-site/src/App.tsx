@@ -45,7 +45,7 @@ const InnerContainer = styled.div`
 
 const MainContent = styled.main`
   display: grid;
-  height: 100%;
+  height: calc(100vh - 56px);
   grid-template-columns: max-content 1fr;
   width: 100%;
 `;
@@ -70,6 +70,7 @@ const HeaderContainer = styled(Box)`
   width: 100%;
   grid-column: 1 / -1;
   background-color: white;
+  height: 56px;
 `;
 
 const NavTitleContainer = styled(FlexItem)`
