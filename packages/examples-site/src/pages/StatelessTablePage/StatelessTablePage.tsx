@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, {
+  BaseSyntheticEvent,
+  FunctionComponent,
+  SyntheticEvent,
+  useEffect,
+  useState,
+} from "react";
 import {
   Flex,
   FlexItem,
@@ -35,18 +41,33 @@ const PageStatelessTable: FunctionComponent = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [page, setPage] = useState(1);
   const [catalogSelected, setCatalogSelected] = useState(false);
+  const [lastRowChecked, setLastRowChecked] = useState<number | null>(null);
 
   // let's track the checkboxes state
   const [checkboxes, setCheckboxes] = React.useState(
     Array.from({ length: rowsPerPage }).map(() => false)
   );
-  const handleCheckboxChange = (index: number) => {
+  const handleCheckboxChange = (e: any, index: number) => {
+    const shiftPressed = e.nativeEvent.shiftKey;
+    console.log("shiftPressed", shiftPressed);
     setCatalogSelected(false);
-    setCheckboxes((prev) => {
-      const newCheckboxes = [...prev];
-      newCheckboxes[index] = !newCheckboxes[index];
-      return newCheckboxes;
-    });
+    if (shiftPressed && lastRowChecked !== null) {
+      const newCheckboxes = [...checkboxes];
+      const start = Math.min(lastRowChecked, index);
+      const end = Math.max(lastRowChecked, index);
+      for (let i = start; i <= end; i++) {
+        newCheckboxes[i] = true;
+      }
+      setCheckboxes(newCheckboxes);
+    } else {
+      setLastRowChecked(index);
+      setCheckboxes((prev) => {
+        const newCheckboxes = [...prev];
+        newCheckboxes[index] = !newCheckboxes[index];
+        return newCheckboxes;
+      });
+    }
+    // let's handle select and deselect all
   };
   const handleSelectAll = () => {
     // let's handle select and deselect all
@@ -81,9 +102,6 @@ const PageStatelessTable: FunctionComponent = () => {
   const selectedItems = catalogSelected
     ? items.length
     : checkboxes.filter((c) => c).length;
-
-  console.log("checkboxes", checkboxes);
-  console.log("selectedItems", selectedItems);
 
   return (
     <StyledStatelessTablePage>
@@ -217,7 +235,9 @@ const PageStatelessTable: FunctionComponent = () => {
                               value={item.sku}
                               label=""
                               checked={checkboxes[rowIndex]}
-                              onChange={() => handleCheckboxChange(rowIndex)}
+                              onChange={(e) =>
+                                handleCheckboxChange(e, rowIndex)
+                              }
                             ></Checkbox>
                           </Td>
                           <Td data-label="Image">
@@ -283,6 +303,36 @@ const PageStatelessTable: FunctionComponent = () => {
                         </Tr>
                       ))
                     }
+                  </Tbody>
+                </StatelessTable>
+              </PanelContents>
+            </Panel>
+            <Panel
+              header="A table with colspans and rowspans"
+              marginBottom={"xxLarge"}
+            >
+              <PanelContents padded={false}>
+                <StatelessTable>
+                  <Thead>
+                    <Tr>
+                      <Th>Column 1</Th>
+                      <Th>Column 2</Th>
+                      <Th>Column 3</Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    <Tr>
+                      <Td rowSpan={3}>I'm spanning 3 rows</Td>
+                      <Td colSpan={2}>I'm spanning 2 columns</Td>
+                    </Tr>
+                    <Tr>
+                      <Td>Row 2 Cell 1</Td>
+                      <Td>Row 2 Cell 2</Td>
+                    </Tr>
+                    <Tr>
+                      <Td>Row 3 Cell 1</Td>
+                      <Td>Row 3 Cell 2</Td>
+                    </Tr>
                   </Tbody>
                 </StatelessTable>
               </PanelContents>
