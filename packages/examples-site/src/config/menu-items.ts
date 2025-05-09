@@ -46,6 +46,11 @@ export const menuItems: MenuItem[] = [
         href: "/page-anchor-nav",
       },
       {
+        hash: "list-side-panel",
+        label: "List / Side Panel",
+        href: "/list-side-panel",
+      },
+      {
         hash: "sidebar-install-screen-app",
         label: "App Installation",
         href: "/install-screen-app",

@@ -16,3 +16,4 @@ export { AsidePanel } from "./components/AsidePanel/AsidePanel";
 export * from "./components/PanelSectionHeader";
 export * from "./components/IntroPanel";
 export * from './components/StatelessTable/StatelessTable';
+export * from "./components/SidePanel/SidePanel"

@@ -13,7 +13,6 @@ export const StyledTableFigure = styled.figure<MarginProps>`
   ${({ theme }) => theme.breakpoints.tablet} {
     white-space: normal;
   }
-
   ${withMargins()};
 `;
 
@@ -112,6 +111,19 @@ export const StyledTr = styled.tr<Omit<TrProps, "children">>`
   border-block-end: 1px solid ${({ theme }) => theme.colors.secondary30};
   position: relative;
 
+  &.information {
+    background-color: ${({ theme }) => theme.colors.primary10};
+  }
+  &.warning {
+    background-color: ${({ theme }) => theme.colors.warning10};
+  }
+  &.danger {
+    background-color: ${({ theme }) => theme.colors.danger10};
+  }
+  &.success {
+    background-color: ${({ theme }) => theme.colors.success10};
+  }
+
   ${({ theme }) => theme.breakpoints.tablet} {
     display: table-row;
     border-block-end: none;
@@ -132,7 +144,7 @@ export const StyledTr = styled.tr<Omit<TrProps, "children">>`
     css`
       @media (hover: hover) {
         &:hover {
-          background-color: ${({ theme }) => theme.colors.primary10};
+          background-color: ${({ theme }) => theme.colors.secondary10};
         }
       }
     `}
@@ -140,7 +152,7 @@ export const StyledTr = styled.tr<Omit<TrProps, "children">>`
 
   &:focus {
     ${({ theme }) => css`
-      background-color: ${theme.colors.primary10};
+      background-color: ${theme.colors.secondary10};
     `}
   }
 `;

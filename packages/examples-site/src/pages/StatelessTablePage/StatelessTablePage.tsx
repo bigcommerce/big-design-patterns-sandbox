@@ -28,7 +28,7 @@ import {
   Td,
   Th,
   Tr,
-} from "../../../../patterns/src/components/StatelessTable/StatelessTable";
+} from "bigcommerce-design-patterns";
 
 import { StyledStatelessTablePage } from "./StatelessTablePage.styled";
 import { getProducts } from "../../data/services";
@@ -332,6 +332,34 @@ const PageStatelessTable: FunctionComponent = () => {
                     <Tr>
                       <Td>Row 3 Cell 1</Td>
                       <Td>Row 3 Cell 2</Td>
+                    </Tr>
+                  </Tbody>
+                </StatelessTable>
+              </PanelContents>
+            </Panel>
+            <Panel
+              header="A table with status highlighted rows"
+              marginBottom={"xxLarge"}
+            >
+              <PanelContents padded={false}>
+                <StatelessTable>
+                  <Thead>
+                    <Tr>
+                      <Th>Status row type</Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    <Tr className="information">
+                      <Td data-label="Status row type">A row with "information" status</Td>
+                    </Tr>
+                    <Tr className="success">
+                      <Td data-label="Status row type">A row with "success" status</Td>
+                    </Tr>
+                    <Tr className="warning">
+                      <Td data-label="Status row type">A row with "warning" status</Td>
+                    </Tr>
+                    <Tr className="danger">
+                      <Td data-label="Status row type">A row with "danger" status</Td>
                     </Tr>
                   </Tbody>
                 </StatelessTable>

@@ -1,0 +1,267 @@
+[
+  {
+    "order_id": 107,
+    "date_ordered": "2023-07-01T17:03:30",
+    "customer": {
+      "name": "Alex Johnson",
+      "email": "alex@example.com",
+      "phone": "1234567890",
+      "billing_address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "New York",
+        "zip": "10001",
+        "country": "United States"
+      },
+      "shipping_address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "New York",
+        "zip": "10001",
+        "country": "United States"
+      }
+    },
+    "ip_address": "203.0.113.1",
+    "order_source": "mydummyorderstore (Online Store)",
+    "payment_method": "Credit Card",
+    "tax_provider": "Basic Tax",
+    "shipping": {
+      "method": "Standard Shipping",
+      "price": 5.00,
+      "zone": "United States",
+      "inventory_location": {
+        "name": "Default location",
+        "address": "5555 Not a real street, Fantasy City, TX, 32567, United States"
+      },
+      "shipping_date": "2023-07-02"
+    },
+    "items": [
+      {
+        "product_name": "The Matrix Poster",
+        "product_url": "https://store.example.com/the-matrix-poster",
+        "sku": "mp-001",
+        "quantity": 1,
+        "unit_price": 15.00,
+        "total_price": 15.00
+      }
+    ],
+    "summary": {
+      "subtotal": 15.00,
+      "shipping": 5.00,
+      "tax": 1.50,
+      "grand_total": 21.50
+    }
+  },
+  {
+    "order_id": 108,
+    "date_ordered": "2023-07-02T10:21:45",
+    "customer": {
+      "name": "Emma Stone",
+      "email": "emma.stone@example.com",
+      "phone": "4155550198",
+      "billing_address": {
+        "street": "1234 Sunset Blvd",
+        "city": "Los Angeles",
+        "state": "California",
+        "zip": "90026",
+        "country": "United States"
+      },
+      "shipping_address": {
+        "street": "1234 Sunset Blvd",
+        "city": "Los Angeles",
+        "state": "California",
+        "zip": "90026",
+        "country": "United States"
+      }
+    },
+    "ip_address": "192.168.1.10",
+    "order_source": "emmastore (Mobile)",
+    "payment_method": "Credit Card",
+    "tax_provider": "Basic Tax",
+    "shipping": {
+      "method": "Free Shipping",
+      "price": 0.00,
+      "zone": "United States",
+      "inventory_location": {
+        "name": "Default location",
+        "address": "5555 Not a real street, Fantasy City, TX, 32567, United States"
+      },
+      "shipping_date": "2023-07-03"
+    },
+    "items": [
+      {
+        "product_name": "Inception Poster",
+        "product_url": "https://store.example.com/inception-poster",
+        "sku": "mp-inc",
+        "quantity": 1,
+        "unit_price": 20.00,
+        "total_price": 20.00
+      }
+    ],
+    "summary": {
+      "subtotal": 20.00,
+      "shipping": 0.00,
+      "tax": 1.40,
+      "grand_total": 21.40
+    }
+  },
+  {
+    "order_id": 109,
+    "date_ordered": "2023-07-03T14:52:19",
+    "customer": {
+      "name": "John Wick",
+      "email": "john.w@example.net",
+      "phone": "3125552233",
+      "billing_address": {
+        "street": "456 Dogwood Lane",
+        "city": "Chicago",
+        "state": "Illinois",
+        "zip": "60614",
+        "country": "United States"
+      },
+      "shipping_address": {
+        "street": "456 Dogwood Lane",
+        "city": "Chicago",
+        "state": "Illinois",
+        "zip": "60614",
+        "country": "United States"
+      }
+    },
+    "ip_address": "10.0.0.5",
+    "order_source": "wickshop (Desktop)",
+    "payment_method": "PayPal",
+    "tax_provider": "Basic Tax",
+    "shipping": {
+      "method": "Standard Shipping",
+      "price": 5.00,
+      "zone": "United States",
+      "inventory_location": {
+        "name": "Default location",
+        "address": "5555 Not a real street, Fantasy City, TX, 32567, United States"
+      },
+      "shipping_date": null
+    },
+    "items": [
+      {
+        "product_name": "Pulp Fiction Poster",
+        "product_url": "https://store.example.com/pulp-fiction-poster",
+        "sku": "mp-pulp",
+        "quantity": 2,
+        "unit_price": 18.00,
+        "total_price": 36.00
+      }
+    ],
+    "summary": {
+      "subtotal": 36.00,
+      "shipping": 5.00,
+      "tax": 2.89,
+      "grand_total": 43.89
+    }
+  },
+  {
+    "order_id": 110,
+    "date_ordered": "2023-07-04T09:15:08",
+    "customer": {
+      "name": "Sofia Coppola",
+      "email": "sofia.c@example.org",
+      "phone": "6465551212",
+      "billing_address": {
+        "street": "789 Cherry Blossom Way",
+        "city": "Brooklyn",
+        "state": "New York",
+        "zip": "11201",
+        "country": "United States"
+      },
+      "shipping_address": {
+        "street": "789 Cherry Blossom Way",
+        "city": "Brooklyn",
+        "state": "New York",
+        "zip": "11201",
+        "country": "United States"
+      }
+    },
+    "ip_address": "172.16.4.12",
+    "order_source": "sofiafilms (Tablet)",
+    "payment_method": "Credit Card",
+    "tax_provider": "Basic Tax",
+    "shipping": {
+      "method": "Express Shipping",
+      "price": 10.00,
+      "zone": "United States",
+      "inventory_location": {
+        "name": "Default location",
+        "address": "5555 Not a real street, Fantasy City, TX, 32567, United States"
+      },
+      "shipping_date": "2023-07-04"
+    },
+    "items": [
+      {
+        "product_name": "Lost in Translation Poster",
+        "product_url": "https://store.example.com/lost-in-translation-poster",
+        "sku": "mp-lit",
+        "quantity": 1,
+        "unit_price": 22.00,
+        "total_price": 22.00
+      }
+    ],
+    "summary": {
+      "subtotal": 22.00,
+      "shipping": 10.00,
+      "tax": 2.24,
+      "grand_total": 34.24
+    }
+  },
+  {
+    "order_id": 111,
+    "date_ordered": "2023-07-04T11:48:50",
+    "customer": {
+      "name": "Bruce Wayne",
+      "email": "bruce@wayneindustries.com",
+      "phone": "2125550000",
+      "billing_address": {
+        "street": "1007 Mountain Drive",
+        "city": "Gotham",
+        "state": "New Jersey",
+        "zip": "07001",
+        "country": "United States"
+      },
+      "shipping_address": {
+        "street": "1007 Mountain Drive",
+        "city": "Gotham",
+        "state": "New Jersey",
+        "zip": "07001",
+        "country": "United States"
+      }
+    },
+    "ip_address": "198.51.100.23",
+    "order_source": "batshop (Desktop)",
+    "payment_method": "Bank Transfer",
+    "tax_provider": "Basic Tax",
+    "shipping": {
+      "method": "Free Shipping",
+      "price": 0.00,
+      "zone": "United States",
+      "inventory_location": {
+        "name": "Default location",
+        "address": "5555 Not a real street, Fantasy City, TX, 32567, United States"
+      },
+      "shipping_date": "2023-07-05"
+    },
+    "items": [
+      {
+        "product_name": "The Dark Knight Poster",
+        "product_url": "https://store.example.com/the-dark-knight-poster",
+        "sku": "mp-tdk",
+        "quantity": 1,
+        "unit_price": 19.00,
+        "total_price": 19.00
+      }
+    ],
+    "summary": {
+      "subtotal": 19.00,
+      "shipping": 0.00,
+      "tax": 1.62,
+      "grand_total": 20.62
+    }
+  }
+]
