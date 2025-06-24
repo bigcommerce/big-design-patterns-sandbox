@@ -1,5 +1,13 @@
 # bigcommerce-examples-site
 
+## 0.12.3
+
+### Patch Changes
+
+- eff59f0: Update styles for scopes, policies and terms in InstallScreen component
+- Updated dependencies [eff59f0]
+  - bigcommerce-design-patterns@0.15.3
+
 ## 0.12.2
 
 ### Patch Changes

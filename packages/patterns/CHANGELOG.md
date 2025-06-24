@@ -1,5 +1,11 @@
 # bigcommerce-design-patterns
 
+## 0.15.3
+
+### Patch Changes
+
+- eff59f0: Update styles for scopes, policies and terms in InstallScreen component
+
 ## 0.15.2
 
 ### Patch Changes
