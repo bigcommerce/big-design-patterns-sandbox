@@ -1,6 +1,6 @@
+import { Box, GridItem, Link } from "@bigcommerce/big-design";
 import { theme as defaultTheme } from "@bigcommerce/big-design-theme";
 import styled from "styled-components";
-import { Box, GridItem, Link } from "@bigcommerce/big-design";
 
 export const StyledBackLink = styled(Link)`
     color: ${({ theme }) => theme.colors.secondary70};
@@ -46,7 +46,6 @@ export const StyledMovingBlock = styled(GridItem)`
 
 StyledMovingBlock.defaultProps = { theme: defaultTheme };
 
-
 export const StyledScopes = styled.ul`
     list-style-type: none;
     padding: 0;
@@ -54,6 +53,8 @@ export const StyledScopes = styled.ul`
 
     & > li {
         margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
+        font-size: ${({ theme }) => theme.typography.fontSize.small};
+        color: ${({ theme }) => theme.colors.secondary60};
     }
 `;
 
