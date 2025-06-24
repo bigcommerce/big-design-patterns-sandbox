@@ -448,9 +448,53 @@ export const InstallScreen: FunctionComponent<InstallScreenProps> = ({
                         onChange={handleAcknowledgmentChange}
                       ></Checkbox>
                     ) : null}
-                    <Text>{copy.policiesAndTerms}</Text>
+                    <Small color="secondary60">{copy.policiesAndTerms}</Small>
                   </Flex>
-                  <Form fullWidth onSubmit={onSubmit}>
+                  {/* Scopes */}
+                  {app.scopesAllowed && app.scopesAllowed.length > 0 ? (
+                    <Box marginBottom="medium">
+                      <Small color="secondary60" marginBottom="small">{copy.scopesAllowed}</Small>
+                      <StyledScopes>
+                        {app.scopesAllowed.map(
+                          (permission: string, index: number) => (
+                            <li key={index}>
+                              <Flex
+                                alignItems={{ mobile: "center" }}
+                                flexDirection={{ mobile: "row" }}
+                              >
+                                <CheckIcon color="success" aria-hidden="true" />
+                                <FlexItem marginLeft="small">
+                                  {permission}
+                                </FlexItem>
+                              </Flex>
+                            </li>
+                          )
+                        )}
+                      </StyledScopes>
+                    </Box>
+                  ) : null}
+                  {app.scopesDenied && app.scopesDenied.length > 0 ? (
+                    <Box marginBottom="medium">
+                      <Small color="secondary60" marginBottom="xSmall">{copy.scopesDenied}</Small>
+                      <StyledScopes>
+                        {app.scopesDenied.map(
+                          (denial: string, index: number) => (
+                            <li key={index}>
+                              <Flex
+                                alignItems={{ mobile: "center" }}
+                                flexDirection={{ mobile: "row" }}
+                              >
+                                <CloseIcon color="danger" aria-hidden="true" />
+                                <FlexItem marginLeft="small">{denial}</FlexItem>
+                              </Flex>
+                            </li>
+                          )
+                        )}
+                      </StyledScopes>
+                    </Box>
+                  ) : null}
+                  {/* Cancel & install buttons */}
+                  <Form marginTop="xLarge" fullWidth onSubmit={onSubmit}>
                     <FormGroup>
                       <Grid
                         gridColumns={{ mobile: "1fr 1fr", desktop: "1fr" }}
@@ -479,51 +523,6 @@ export const InstallScreen: FunctionComponent<InstallScreenProps> = ({
                     </FormGroup>
                   </Form>
                 </StyledMovingBlock>
-                {/* Scopes */}
-                <GridItem>
-                  {app.scopesAllowed && app.scopesAllowed.length > 0 ? (
-                    <Box marginBottom="medium">
-                      <Text marginBottom="small">{copy.scopesAllowed}</Text>
-                      <StyledScopes>
-                        {app.scopesAllowed.map(
-                          (permission: string, index: number) => (
-                            <li key={index}>
-                              <Flex
-                                alignItems={{ mobile: "start" }}
-                                flexDirection={{ mobile: "row" }}
-                              >
-                                <CheckIcon color="success" aria-hidden="true" />
-                                <FlexItem marginLeft="small">
-                                  {permission}
-                                </FlexItem>
-                              </Flex>
-                            </li>
-                          )
-                        )}
-                      </StyledScopes>
-                    </Box>
-                  ) : null}
-                  {app.scopesDenied && app.scopesDenied.length > 0 ? (
-                    <Box>
-                      <Text marginBottom="small">{copy.scopesDenied}</Text>
-                      <StyledScopes>
-                        {app.scopesDenied.map(
-                          (denial: string, index: number) => (
-                            <li key={index}>
-                              <Flex
-                                alignItems={{ mobile: "start" }}
-                                flexDirection={{ mobile: "row" }}
-                              >
-                                <CloseIcon color="danger" aria-hidden="true" />
-                                <FlexItem marginLeft="small">{denial}</FlexItem>
-                              </Flex>
-                            </li>
-                          )
-                        )}
-                      </StyledScopes>
-                    </Box>
-                  ) : null}
-                </GridItem>
               </Grid>
             </Box>
             {/* Mobile toggle */}

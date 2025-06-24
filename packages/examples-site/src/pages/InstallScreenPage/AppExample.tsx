@@ -111,18 +111,18 @@ const InstallScreenApp: FunctionComponent = () => {
     policiesAndTerms: (
       <>
         By clicking install you agree to the <strong>BigCommerce</strong>{" "}
-        <Link href="#" target="_blank">
+        <Link href="#" target="_blank" style={{ fontSize: "inherit" }}>
           Terms of Service
         </Link>{" "}
         and <strong>{app.name}</strong>{" "}
         {app.privacyPolicyURL ? (
-          <Link href={app.privacyPolicyURL} target="_blank">
+          <Link href={app.privacyPolicyURL} target="_blank" style={{ fontSize: "inherit" }}>
             privacy policy
           </Link>
         ) : null}
         {app.privacyPolicyURL && app.termsOfServiceURL ? " and " : null}
         {app.termsOfServiceURL ? (
-          <Link href={app.termsOfServiceURL} target="_blank">
+          <Link href={app.termsOfServiceURL} target="_blank" style={{ fontSize: "inherit" }}>
             terms of service
           </Link>
         ) : null}
