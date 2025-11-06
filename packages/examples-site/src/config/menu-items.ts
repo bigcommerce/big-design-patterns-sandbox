@@ -93,6 +93,11 @@ export const menuItems: MenuItem[] = [
         hash: "sidebar-page-crud-list",
         label: "Create, Read, Update, Delete",
         href: "/page-crud-list",
+      },
+      {
+        hash: "sidebar-onboarding",
+        label: "Onboarding",
+        href: "/onboarding",
       }
     ]
   },

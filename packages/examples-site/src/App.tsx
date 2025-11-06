@@ -29,6 +29,7 @@ import { ReactRouterProviderAdapter } from "./adapters/react-router-adapter";
 import { menuItems } from "./config/menu-items";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { BigDesignIcon } from "./components/BigDesignIcon";
+import PageOnboarding from "./pages/Onboarding/Onboarding";
 
 export const alertsManager = createAlertsManager();
 
@@ -198,6 +199,10 @@ const RouteFC = () => {
       path: "/panel-contents",
       element: <PagePanelContents />,
     },
+    {
+      path: "/onboarding",
+      element: <PageOnboarding />,
+    }
   ]);
   
   return routes;
